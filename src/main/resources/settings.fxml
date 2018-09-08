@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #2D3447;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.szczepix.quitsmoker.views.content.SettingsView">
+   <children>
+      <Separator layoutX="14.0" layoutY="57.0" opacity="0.5" prefHeight="3.0" prefWidth="156.0" style="-fx-background-color: #a0a2ab#a0a2ab;" />
+      <Text fill="#2196f3" layoutX="17.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Settings" />
+      <Button fx:id="saveButton" alignment="CENTER" layoutX="185.0" layoutY="171.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #2196f3;" text="Save" textFill="#fcf9f9" />
+      <Text fill="#a0a2ab" layoutX="26.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You can change daily price of the cigarettes here." textAlignment="CENTER" wrappingWidth="332.0" />
+      <Text fill="#2196f3" layoutX="23.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Daily saves:" />
+      <TextField fx:id="priceText" alignment="CENTER" layoutX="110.0" layoutY="72.0" prefHeight="27.0" prefWidth="150.0" promptText="0.00" style="-fx-background-color: #2196f3; -fx-text-fill: #ffffff;" />
+      <Separator layoutX="160.0" layoutY="152.0" opacity="0.5" prefHeight="3.0" prefWidth="200.0" style="-fx-background-color: #a0a2ab#a0a2ab;" />
+   </children>
+</AnchorPane>

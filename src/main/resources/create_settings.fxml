@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: #2D3447;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.szczepix.quitsmoker.views.content.CreateSettingsView">
+   <children>
+      <TextField fx:id="valueText" alignment="CENTER" layoutX="75.0" layoutY="91.0" prefHeight="27.0" prefWidth="150.0" promptText="0.00" style="-fx-background-color: #2196f3; -fx-text-fill: #ffffff;" />
+      <Text fill="#2196f3" layoutX="24.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Settings:" />
+      <Separator layoutX="14.0" layoutY="62.0" opacity="0.5" prefHeight="2.0" prefWidth="150.0" style="-fx-background-color: #a0a2ab#a0a2ab;" />
+      <Text fill="#2196f3" layoutX="24.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price:" />
+      <Button fx:id="saveButton" alignment="CENTER" layoutX="75.0" layoutY="249.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #2196f3;" text="Save" textFill="#fcf9f9" />
+      <Separator layoutX="141.0" layoutY="214.0" opacity="0.5" prefHeight="2.0" prefWidth="150.0" style="-fx-background-color: #a0a2ab#a0a2ab;" />
+      <TextFlow layoutX="15.0" layoutY="310.0" prefHeight="46.0" prefWidth="271.0" textAlignment="CENTER">
+         <children>
+            <TextFlow prefHeight="46.0" prefWidth="271.0" textAlignment="CENTER">
+               <children>
+                  <Text fill="#a0a2ab" strokeType="OUTSIDE" strokeWidth="0.0" text="Click Save and start your life wihtout smoking!" textAlignment="CENTER" wrappingWidth="187.7001953125" />
+               </children>
+            </TextFlow>
+         </children>
+      </TextFlow>
+      <Text fill="#a0a2ab" layoutX="16.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Provide the price how much did you spend for cigarettes per day." textAlignment="CENTER" wrappingWidth="271.0" />
+   </children>
+</AnchorPane>
