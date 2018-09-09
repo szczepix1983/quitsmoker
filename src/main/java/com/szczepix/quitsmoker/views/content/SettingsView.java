@@ -1,5 +1,6 @@
 package com.szczepix.quitsmoker.views.content;
 
+import com.szczepix.quitsmoker.enums.ContentViewType;
 import com.szczepix.quitsmoker.services.settingService.ISettingService;
 import com.szczepix.quitsmoker.views.FXMLView;
 import com.szczepix.quitsmoker.views.popups.InfoPopup;
@@ -19,6 +20,8 @@ public class SettingsView extends FXMLView {
     @FXML
     public Button saveButton;
     @FXML
+    public Button gaveUpButton;
+    @FXML
     public TextField priceText;
 
     @Autowired
@@ -27,6 +30,7 @@ public class SettingsView extends FXMLView {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         enableButton(saveButton, this::onSaveButton);
+        enableButton(gaveUpButton, this::onGaveUpButton);
         enableCompononet(priceText);
         setupValueText();
     }
@@ -51,6 +55,21 @@ public class SettingsView extends FXMLView {
             popupInfoMessage = "Unexpected Error. \n \n " + e;
         }
         new InfoPopup(stageManager, popupInfoMessage);
+    }
+
+    private void onGaveUpButton(ActionEvent event) {
+        String popupInfoMessage;
+        try {
+            settingService.getSettings().getEntity().setPrice(0.0);
+            settingService.save();
+
+            popupInfoMessage = "That's soo sad, your statistics has been reset, please try again as soon as it possible.";
+        } catch (Exception e) {
+            popupInfoMessage = "Unexpected Error. \n \n " + e;
+        }
+        new InfoPopup(stageManager, popupInfoMessage);
+
+        stageManager.show(ContentViewType.CREATE_SETTING, stageManager.getView().contentPane);
     }
 }
 

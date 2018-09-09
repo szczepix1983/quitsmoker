@@ -37,7 +37,7 @@ public class FxmlUtilsTest {
     public void load() throws Exception {
         AnnotationConfigApplicationContext context = mock(AnnotationConfigApplicationContext.class);
         URL url = getClass().getClassLoader().getResource("mock.fxml");
-        Parent parent = FxmlUtils.load(url, context);
+        Parent parent = FxmlUtils.load(url, context).load();
 
         assertThat(parent).isNotNull();
     }

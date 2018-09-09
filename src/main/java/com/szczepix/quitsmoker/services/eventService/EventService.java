@@ -17,8 +17,8 @@ public class EventService {
         getConsumer(eventType.getName()).add(eventHandler);
     }
 
-    public void removeListener(final BaseEventType eventType, final Consumer<BaseEvent> eventHandler) {
-        getConsumer(eventType.getName()).remove(eventHandler);
+    public void removeListener(final BaseEventType eventType) {
+        getConsumer(eventType.getName()).clear();
     }
 
     public void dispatch(final BaseEvent event) {

@@ -18,7 +18,7 @@
          <children>
             <TextFlow prefHeight="46.0" prefWidth="271.0" textAlignment="CENTER">
                <children>
-                  <Text fill="#a0a2ab" strokeType="OUTSIDE" strokeWidth="0.0" text="Click Save and start your life wihtout smoking!" textAlignment="CENTER" wrappingWidth="187.7001953125" />
+                  <Text fill="#a0a2ab" strokeType="OUTSIDE" strokeWidth="0.0" text="Click Save and start your life without smoking!" textAlignment="CENTER" wrappingWidth="187.7001953125" />
                </children>
             </TextFlow>
          </children>

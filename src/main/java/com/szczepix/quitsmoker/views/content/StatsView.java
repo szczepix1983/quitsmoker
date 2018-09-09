@@ -1,11 +1,14 @@
 package com.szczepix.quitsmoker.views.content;
 
 import com.szczepix.quitsmoker.enums.BaseEventType;
+import com.szczepix.quitsmoker.enums.HealthProgressType;
 import com.szczepix.quitsmoker.services.eventService.BaseEvent;
 import com.szczepix.quitsmoker.services.eventService.EventService;
 import com.szczepix.quitsmoker.services.settingService.ISettingService;
 import com.szczepix.quitsmoker.views.FXMLView;
+import com.szczepix.quitsmoker.views.components.IUpdateItemComponent;
 import com.szczepix.quitsmoker.views.components.ItemComponent;
+import com.szczepix.quitsmoker.views.components.ItemProgressComponent;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,6 +20,8 @@ import org.springframework.stereotype.Component;
 
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 @Component
@@ -35,7 +40,7 @@ public class StatsView extends FXMLView {
     @Autowired
     private ISettingService settingService;
 
-    private ItemComponent component;
+    private List<IUpdateItemComponent> components = new ArrayList<>();
 
     private SimpleDateFormat dateFormat = new SimpleDateFormat("DD");
 
@@ -46,9 +51,18 @@ public class StatsView extends FXMLView {
     }
 
     private void fillContent() {
+        HealthProgressType[] healthProgressTypes = HealthProgressType.class.getEnumConstants();
+
         try {
-            component = new ItemComponent(settingService.getSettings());
+            IUpdateItemComponent component = new ItemComponent(settingService.getSettings());
             gridPane.add(component.load(), 0, 0);
+            components.add(component);
+
+            for (int i = 0; i < healthProgressTypes.length; i++) {
+                component = new ItemProgressComponent(healthProgressTypes[i], settingService.getSettings());
+                gridPane.add(component.load(), 0, i + 1);
+                components.add(component);
+            }
         } catch (Exception e) {
             System.out.println("eeee: " + e);
         }
@@ -58,20 +72,24 @@ public class StatsView extends FXMLView {
         setDays();
     }
 
+    @Override
+    public void destroy() {
+        eventService.removeListener(BaseEventType.SETTINGS_CHANGE);
+    }
+
     private void onTipButton(ActionEvent event) {
 
     }
 
     public void onChange(BaseEvent baseEvent) {
-        Platform.runLater(()->{
+        System.out.println("clear");
+        Platform.runLater(() -> {
             setDays();
-            component.setMoney(settingService.getSettings().getStats().get("money"));
-            component.setPercentage(settingService.getSettings().getStats().get("percentage"));
-            component.setTime(System.currentTimeMillis() - settingService.getSettings().getEntity().getTimestamp());
+            components.forEach(IUpdateItemComponent::update);
         });
     }
 
-    private void setDays(){
+    private void setDays() {
         totalText.setText(dateFormat.format(System.currentTimeMillis() - settingService.getSettings().getEntity().getTimestamp()));
     }
 }

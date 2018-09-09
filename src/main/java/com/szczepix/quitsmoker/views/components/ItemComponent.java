@@ -2,6 +2,7 @@ package com.szczepix.quitsmoker.views.components;
 
 import com.szczepix.quitsmoker.models.SettingModel;
 import com.szczepix.quitsmoker.utils.DecimalUtils;
+import com.szczepix.quitsmoker.utils.MathUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -11,8 +12,9 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.TimeZone;
 
-public class ItemComponent extends BaseComponentView {
+public class ItemComponent extends BaseComponentView implements IUpdateItemComponent {
 
     private final SettingModel model;
     @FXML
@@ -32,6 +34,8 @@ public class ItemComponent extends BaseComponentView {
 
     public ItemComponent(final SettingModel model) {
         this.model = model;
+
+        this.dateFormat.setTimeZone(TimeZone.getTimeZone("CEST"));
     }
 
     @Override
@@ -42,8 +46,6 @@ public class ItemComponent extends BaseComponentView {
     @Override
     public void onInitalize() {
         nameText.setText("You are free!");
-        setMoney(model.getStats().get("money"));
-        setPercentage(model.getStats().get("percentage"));
         enableButton(detailsButton, this::onDetailsButton);
     }
 
@@ -51,16 +53,23 @@ public class ItemComponent extends BaseComponentView {
 
     }
 
-    public void setMoney(final double money) {
+    private void setMoney(final double money) {
         moneyText.setText(DecimalUtils.format(money));
     }
 
-    public void setPercentage(final double percentage) {
+    private void setPercentage(final double percentage) {
         percentageIndicator.setProgress(percentage / 100);
         percentageText.setText(DecimalUtils.format(percentage));
     }
 
-    public void setTime(final long timeDifference){
+    private void setTime(final long timeDifference){
         timeText.setText(dateFormat.format(new Date(timeDifference)));
+    }
+
+    @Override
+    public void update() {
+        setMoney(model.getStats().get("money"));
+        setPercentage(model.getStats().get("percentage"));
+        setTime(MathUtils.timeSpend(model.getEntity().getTimestamp()));
     }
 }

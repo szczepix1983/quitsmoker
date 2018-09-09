@@ -1,5 +1,6 @@
 package com.szczepix.quitsmoker.utils;
 
+import com.szczepix.quitsmoker.enums.HealthProgressType;
 import com.szczepix.quitsmoker.enums.PeriodType;
 import org.assertj.core.data.Offset;
 import org.junit.Before;
@@ -48,10 +49,10 @@ public class MathUtilsTest {
         assertThat(result).isEqualTo(120.0);
 
         result = MathUtils.calculateTotalMoney(1, PeriodType.DAILY);
-        assertThat(result).isEqualTo(30.0);
+        assertThat(result).isEqualTo(21.0);
 
         result = MathUtils.calculateTotalMoney(5, PeriodType.DAILY);
-        assertThat(result).isEqualTo(150.0);
+        assertThat(result).isEqualTo(105.0);
 
         result = MathUtils.calculateTotalMoney(1, PeriodType.MONTHLY);
         assertThat(result).isEqualTo(12.0);
@@ -85,6 +86,17 @@ public class MathUtilsTest {
         startTime = System.currentTimeMillis() - PeriodType.MONTHLY.getTotalDuration() * 1000;
         result = MathUtils.calculatePercentage(startTime, 155.0, PeriodType.MONTHLY);
         assertThat(result).isEqualTo(100.0);
+    }
+
+    @Test
+    public void calculatePercentageForHealth() {
+        long startTime = System.currentTimeMillis() - (HealthProgressType.AFTER_3_HOURS.getDuration() * 1000);
+        double result = MathUtils.calculatePercentage(startTime, HealthProgressType.AFTER_3_HOURS);
+        assertThat(result).isEqualTo(100.0);
+
+        startTime = System.currentTimeMillis() - ((HealthProgressType.AFTER_3_HOURS.getDuration()/2) * 1000);
+        result = MathUtils.calculatePercentage(startTime, HealthProgressType.AFTER_3_HOURS);
+        assertThat(result).isEqualTo(50);
     }
 
     @Test

@@ -6,7 +6,7 @@ import lombok.Getter;
 public enum PeriodType {
 
     HOURLY("per hour", (60 * 60), (60 * 60 * 24)),
-    DAILY("per day", (60 * 60 * 24), (60 * 60 * 24 * 30)),
+    DAILY("per day", (60 * 60 * 24), (60 * 60 * 24 * 21)),
     MONTHLY("per month", (60 * 60 * 24 * 30), (60 * 60 * 24 * 30 * 12));
 
     String name;

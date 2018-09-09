@@ -3,7 +3,9 @@ package com.szczepix.quitsmoker.managers;
 import com.szczepix.quitsmoker.enums.AppViewType;
 import com.szczepix.quitsmoker.enums.ContentViewType;
 import com.szczepix.quitsmoker.utils.FxmlUtils;
+import com.szczepix.quitsmoker.views.FXMLView;
 import com.szczepix.quitsmoker.views.MainView;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
@@ -15,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.Objects;
+import java.util.TreeMap;
 import java.util.logging.Logger;
 
 public class StageManager implements IStageManager {
@@ -27,6 +30,8 @@ public class StageManager implements IStageManager {
     @Getter
     @Setter
     private MainView view;
+
+    private TreeMap<String, FXMLView> controllers = new TreeMap<>();
 
     public StageManager(final Stage stage) {
         this.stage = stage;
@@ -52,6 +57,9 @@ public class StageManager implements IStageManager {
 
     @Override
     public void show(final ContentViewType contentViewType, final Pane pane) {
+        if (pane.getChildren().size() > 0) {
+            controllers.get(pane.getChildren().get(0).toString()).destroy();
+        }
         pane.getChildren().clear();
         pane.getChildren().add(loadViewNodeHierarchy(contentViewType.getPath()));
     }
@@ -76,9 +84,12 @@ public class StageManager implements IStageManager {
 
     private Parent loadViewNodeHierarchy(final String fxmlFilePath) {
         Parent rootNode = null;
+        FXMLLoader loader = null;
         try {
-            rootNode = FxmlUtils.load(getClass().getClassLoader().getResource(fxmlFilePath), context);
+            loader = FxmlUtils.load(getClass().getClassLoader().getResource(fxmlFilePath), context);
+            rootNode = loader.load();
             Objects.requireNonNull(rootNode, "A Root FXML node must not be null");
+            controllers.put(rootNode.toString(), loader.getController());
         } catch (Exception exception) {
             LOG.warning(exception.toString());
         }

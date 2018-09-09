@@ -31,7 +31,7 @@ public class EventServiceTest {
 
     @Test
     public void removeListener() {
-        eventService.removeListener(BaseEventType.MOCK, this::checkMockListener);
+        eventService.removeListener(BaseEventType.MOCK);
         assertThat(dispatchedMockData).isNull();
     }
 
@@ -63,6 +63,17 @@ public class EventServiceTest {
         eventService.dispatch(eventMock2);
 
         assertThat(dispatchedMockData).isEqualTo(eventMock2.getData());
+    }
+
+    @Test
+    public void dispatchWithNoListener() {
+        final EventMock eventMock = new EventMock().setData("szczepix");
+
+        eventService.addListener(BaseEventType.MOCK, this::checkMockListener);
+        eventService.removeListener(BaseEventType.MOCK);
+        eventService.dispatch(eventMock);
+
+        assertThat(dispatchedMockData).isNull();
     }
 
     private void checkMockListener(final BaseEvent event) {

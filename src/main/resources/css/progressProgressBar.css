@@ -1,0 +1,7 @@
+.percentageProgressBar .percentage {
+    -fx-fill: null ;
+}
+
+.percentageProgressBar {
+    -fx-progress-color: #2196f3 ;
+}
