@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: #2D3447;" type="AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Separator layoutX="18.0" layoutY="49.0" opacity="0.5" prefHeight="3.0" prefWidth="365.0" style="-fx-background-color: #a0a2ab#a0a2ab;" />
+      <Label fx:id="titleLabel" contentDisplay="CENTER" layoutX="20.0" layoutY="17.0" mouseTransparent="true" text="Dashboard" textFill="#fcfcfc">
+         <font>
+            <Font name="Apple Symbols" size="24.0" />
+         </font>
+      </Label>
+      <Text fill="#a0a2ab" layoutX="13.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Provide a message for yourself, when you will need some help to defet a smoking needs that message can be randomly displayed as a task for you, ex. Run for 10 min" textAlignment="CENTER" wrappingWidth="376.0" />
+      <Separator layoutX="235.0" layoutY="153.0" opacity="0.5" prefHeight="2.0" prefWidth="150.0" style="-fx-background-color: #a0a2ab#a0a2ab;" />
+      <Button fx:id="saveButton" alignment="CENTER" layoutX="235.0" layoutY="162.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #2196f3;" text="Save" textFill="#fcf9f9" />
+      <TextField fx:id="messageText" alignment="CENTER" layoutX="31.0" layoutY="64.0" prefHeight="27.0" prefWidth="340.0" promptText="Write message" style="-fx-background-color: #2196f3; -fx-text-fill: #ffffff;" />
+   </children>
+</fx:root>

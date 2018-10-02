@@ -52,10 +52,19 @@ public class SettingServiceTest {
     }
 
     @Test
-    public void init() {
+    public void initWhenNotExists() {
         when(repository.findOne(any())).thenReturn(null);
         settingService.init();
         verify(repository, atLeast(1)).save(any(SettingEntity.class));
+        verify(cache, atLeast(1)).update(any());
+    }
+
+    @Test
+    public void initWhenExists() {
+        when(repository.findOne(any())).thenReturn(new SettingEntityTest.SettingEntityMock());
+        settingService.init();
+        verify(repository, atLeast(1)).save(any(SettingEntity.class));
+        verify(cache, atLeast(1)).update(any());
     }
 
     @Test

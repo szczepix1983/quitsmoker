@@ -22,6 +22,8 @@ public class MenuView extends FXMLView {
     @FXML
     public Button settingsButton;
     @FXML
+    public Button helperButton;
+    @FXML
     public Button licenseButton;
 
     @Autowired
@@ -31,6 +33,7 @@ public class MenuView extends FXMLView {
     public void initialize(URL location, ResourceBundle resources) {
         enableButton(statsButton, this::handleStatsButton);
         enableButton(settingsButton, this::handleSettingsButton);
+        enableButton(helperButton, this::handleHelperButton);
         enableButton(licenseButton, this::handleOpenLicense);
     }
 
@@ -46,6 +49,10 @@ public class MenuView extends FXMLView {
         } else {
             stageManager.show(ContentViewType.CREATE_SETTING, stageManager.getView().contentPane);
         }
+    }
+
+    protected void handleHelperButton(ActionEvent actionEvent) {
+        stageManager.show(ContentViewType.HELPER, stageManager.getView().contentPane);
     }
 
     protected void handleOpenLicense(ActionEvent actionEvent) {

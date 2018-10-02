@@ -32,7 +32,7 @@
             <Font name="Apple Symbols" size="40.0" />
          </font>
       </Label>
-      <Button fx:id="statsButton" alignment="CENTER" layoutY="142.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: #2D3447;" text="Stats" textAlignment="CENTER" textFill="#a0a2ab" />
+      <Button fx:id="statsButton" alignment="CENTER" layoutY="167.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: #2D3447;" text="Stats" textAlignment="CENTER" textFill="#a0a2ab" />
       <Separator layoutX="14.0" layoutY="79.0" opacity="0.5" prefHeight="3.0" prefWidth="127.0" style="-fx-background-color: #a0a2ab#a0a2ab;" />
       <Label contentDisplay="CENTER" layoutX="55.0" layoutY="91.0" mouseTransparent="true" text="Dashboard" textFill="#fcfcfc">
          <font>
@@ -40,17 +40,18 @@
          </font>
       </Label>
       <Separator layoutX="44.0" layoutY="128.0" opacity="0.5" prefHeight="2.0" prefWidth="114.0" style="-fx-background-color: #a0a2ab#a0a2ab;" />
-      <Separator layoutX="10.0" layoutY="217.0" opacity="0.5" prefHeight="3.0" prefWidth="178.0" style="-fx-background-color: #a0a2ab#a0a2ab;" />
-      <Button fx:id="settingsButton" alignment="CENTER" layoutY="173.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: #2D3447;" text="Settings" textAlignment="CENTER" textFill="#a0a2ab" />
-      <Label layoutX="22.0" layoutY="228.0" mouseTransparent="true" text="Szczepix © 2018" textFill="#a0a2ab" underline="true">
+      <Separator layoutX="10.0" layoutY="236.0" opacity="0.5" prefHeight="3.0" prefWidth="178.0" style="-fx-background-color: #a0a2ab#a0a2ab;" />
+      <Button fx:id="settingsButton" alignment="CENTER" layoutX="1.0" layoutY="140.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: #2D3447;" text="Settings" textAlignment="CENTER" textFill="#a0a2ab" />
+      <Label layoutX="22.0" layoutY="247.0" mouseTransparent="true" text="Szczepix © 2018" textFill="#a0a2ab" underline="true">
          <font>
             <Font name="Apple Symbols" size="14.0" />
          </font>
       </Label>
-      <Button fx:id="licenseButton" alignment="CENTER" layoutX="114.0" layoutY="223.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="73.0" style="-fx-background-color: #2D3447;" text="License" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="licenseButton" alignment="CENTER" layoutX="114.0" layoutY="242.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="73.0" style="-fx-background-color: #2D3447;" text="License" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Apple Symbols" size="12.0" />
          </font>
       </Button>
+      <Button fx:id="helperButton" alignment="CENTER" layoutY="194.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: #2D3447;" text="Help" textAlignment="CENTER" textFill="#a0a2ab" />
    </children>
 </AnchorPane>
