@@ -51,15 +51,15 @@ public class ItemProgressComponent extends BaseComponentView implements IUpdateI
     public void update() {
         final long timeDifference = MathUtils.timeSpend(model.getEntity().getTimestamp());
         setPercentage(MathUtils.calculatePercentage(model.getEntity().getTimestamp(), healthProgressType));
-        setTime(Math.max(TimeUnit.SECONDS.toMillis(healthProgressType.getDuration()) - timeDifference, 0));
+        if(MathUtils.calculatePercentage(model.getEntity().getTimestamp(), healthProgressType) == 100){
+            timeText.setText("Done!");
+        } else {
+            timeText.setText(dateFormat.format(new Date(Math.max(TimeUnit.SECONDS.toMillis(healthProgressType.getDuration()) - timeDifference, 0))));
+        }
     }
 
     private void setPercentage(final double percentage) {
         percentageProgressBar.setProgress(percentage / 100);
         percentageText.setText(DecimalUtils.format(percentage));
-    }
-
-    private void setTime(final long timeDifference) {
-        timeText.setText(dateFormat.format(new Date(timeDifference)));
     }
 }

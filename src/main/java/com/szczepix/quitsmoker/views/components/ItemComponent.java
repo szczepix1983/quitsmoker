@@ -54,7 +54,7 @@ public class ItemComponent extends BaseComponentView implements IUpdateItemCompo
     }
 
     private void setMoney(final double money) {
-        moneyText.setText(DecimalUtils.format(money));
+        moneyText.setText(DecimalUtils.format(money) + " zł");
     }
 
     private void setPercentage(final double percentage) {
